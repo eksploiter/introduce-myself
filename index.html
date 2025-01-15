@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Introduction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 1s ease;
+            font-size: 1.8em;
+        }
+        header.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s ease;
+            font-size: 1.2em;
+        }
+        .section.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .about-me h2, .projects h2, .skills h2, .contact h2 {
+            color: #007bff;
+            font-size: 1.5em;
+        }
+        .projects img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .skills ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skills li {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            margin: 5px;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+        .skills li a {
+            color: white;
+            text-decoration: none;
+        }
+        .contact a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .center-message {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #f4f4f9;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        .center-message.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hello, I'm MINSOO</h1>
+        <p>SSAFY 13기 13반에서 함께 공부하게 되어 영광입니다!</p>
+    </header>
+
+    <section class="section about-me">
+        <h2>About Me</h2>
+        <p>1999.05.10</p>
+        <p>동탄 거주 및 통학</p>
+        <p>ENFJ</p>
+    </section>
+
+    <section class="section projects">
+        <h2>Experience</h2>
+        <p>이런 경험이 있어요!</p>
+        <ul>
+            <p>📱 최근까지는 안드로이드 개발을 위주로 공부했습니다.</p>
+            <p>🚀 원래는 예체능으로 그림 작가를 꿈꿨습니다.</p>
+        </ul>
+    </section>
+
+    <section class="section skills">
+        <h2>Interest</h2>
+        <ul>
+            <li>SSAFY</li>
+            <li>취업</li>
+            <li>진격의 거인</li>
+        </ul>
+    </section>
+
+    <section class="section skills">
+        <h2>Hobby</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/ilustracion_kim" target="_blank" style="color:white">그림</a></li>
+            <li>피아노</li>
+            <li>영화</li>
+        </ul>
+    </section>
+
+    <section class="section contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me via:</p>
+        <p>Email: <a href="minsu_510@naver.com">minsu_510@naver.com</a></p>
+        <p>GitHub: <a href="https://github.com/eksploiter" target="_blank">https://github.com/eksploiter</a></p>
+    </section>
+
+    <div class="center-message">
+        저는 비빔 인간 입니다.
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.section, header, .center-message');
+        const options = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
